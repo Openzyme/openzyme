@@ -1,4 +1,5 @@
-FROM sunhwan/openmm
+# FROM sunhwan/openmm
+FROM python
 
 COPY s3_fetch_and_run.py .
 COPY requirements.txt .
