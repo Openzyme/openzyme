@@ -8,7 +8,7 @@ import uuid
 import boto3
 
 
-S3_BUCKET = 'openzyme'
+S3_BUCKET = 'openmm'
 
 
 def fetch_and_run_script(script_s3_filename, protein_s3_filename):
