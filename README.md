@@ -73,6 +73,15 @@ $ docker exec -it bacalhau ./bacalhau docker run --gpu=1 -o output:/code/output 
 $ docker exec -it bacalhau ./bacalhau get <job_id>
 ```
 
+## Next Steps
+* Change structure-to-trajectory.py 
+* Have create-protein-trajectory.py download all result files to output
+* Pass in PDB files as input through IPFS
+* Pass in params as json file through IPFS
+* Add alphafold with defaul weights to container
+* Add amino-acid-to-structure.py
+* Add amino-acid-to-trajectory.py
+
 ## Remote Dev Setup
 Recommend using VSCodes SSH tool with an AWS P2 instance
 
