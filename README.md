@@ -7,15 +7,27 @@
 $ docker build -t compbio -f ./compbio/Dockerfile ./compbio/
 ```
 
-2) Optional Check if GPU Platform is available
+2) Check that GPU Platform is available
 ```
-$ docker run compbio python -m openmm.testInstallation
+$ docker run --gpus all compbio python -m openmm.testInstallation
+```
+
+2) Run a Molecular Simulation Locally
+```
+$ docker run --gpus all -v $PWD/compbio/output:/code/output compbio python workflows/simulate-protein.py
+```
+Output files should appear in compbio/output after the docker run finishes
+
+3) (Optional) Deploy Code Changes
+```
+$ docker tag compbio openzyme/compbio:a0.2
+$ docker push openzyme/compbio:a0.2
 ```
 
 ## Bacalhau Jobs
 1) Build Dockerized Bacalhau Connection
 ```
-$ sysctl -w net.core.rmem_max=2500000  # Sometimes bacalhau downloads require higher rmem
+$ sudo sysctl -w net.core.rmem_max=2500000  # Sometimes bacalhau downloads require higher rmem
 $ docker build -t bacalhau .
 $ docker run --name bacalhau -v bacalhauvol:/bacalhau-main -dt bacalhau
 ```
@@ -53,6 +65,12 @@ Run the following to download results onto to local filesytem (replace id with y
 ```
 $ docker exec -it bacalhau ./bacalhau get df0aed15-c930-4b1f-bedb-c2baeb6092eb
 $ docker cp bacalhau:/go/bacalhau-main/job-79ec2e3d $PWD/tmp/
+```
+
+## Run a Molecular Simulation in Bacalhau
+```
+$ docker exec -it bacalhau ./bacalhau docker run --gpu=1 -o output:/code/output openzyme/compbio:a0.2 python workflows/simulate-protein.py
+$ docker exec -it bacalhau ./bacalhau get <job_id>
 ```
 
 ## Remote Dev Setup

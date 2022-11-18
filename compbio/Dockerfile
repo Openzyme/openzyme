@@ -14,5 +14,7 @@ RUN conda --version
 RUN conda install -c conda-forge openmm cudatoolkit
 
 WORKDIR /code
+
 COPY ./common.py ./
-COPY ./workflows ./
+COPY ./workflows ./workflows
+COPY ./tests/2dri-processed.pdb ./
