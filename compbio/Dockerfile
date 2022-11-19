@@ -12,9 +12,17 @@ RUN wget \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 RUN conda --version
 RUN conda install -c conda-forge openmm cudatoolkit
-
+RUN conda install -c conda-forge mdtraj
+RUN conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
 WORKDIR /code
 
-COPY ./common.py ./
-COPY ./workflows ./workflows
+RUN export PATH=“/root/miniconda3/bin:$PATH”
+RUN pip install fair-esm 
+RUN pip install "fair-esm[esmfold]"
+RUN apt-get update && apt-get install -y git g++
+RUN pip install 'dllogger @ git+https://github.com/NVIDIA/dllogger.git'
+RUN pip install 'openfold @ git+https://github.com/aqlaboratory/openfold.git@4b41059694619831a7db195b7e0988fc4ff3a307'
+RUN pip install biotite
+
 COPY ./tests/2dri-processed.pdb ./
+COPY ./workflows ./workflows
