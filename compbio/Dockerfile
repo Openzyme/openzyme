@@ -24,5 +24,8 @@ RUN pip install 'dllogger @ git+https://github.com/NVIDIA/dllogger.git'
 RUN pip install 'openfold @ git+https://github.com/aqlaboratory/openfold.git@4b41059694619831a7db195b7e0988fc4ff3a307'
 RUN pip install biotite
 
+COPY ./download.py ./download.py
+RUN python download.py
+
 COPY ./tests/2dri-processed.pdb ./
 COPY ./workflows ./workflows
