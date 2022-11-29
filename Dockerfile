@@ -5,6 +5,3 @@ RUN wget https://github.com/filecoin-project/bacalhau/archive/refs/heads/main.zi
 RUN unzip main.zip
 WORKDIR bacalhau-main
 RUN go build
-RUN export PREDICTABLE_API_PORT=1
-
-CMD ./bacalhau devstack
