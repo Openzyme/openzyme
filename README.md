@@ -1,4 +1,5 @@
-# Openzyme
+# ![Openzyme](https://user-images.githubusercontent.com/9427089/205105361-597bec4c-52ac-449d-869e-1b26708874f4.png)
+
 ### Make Molecular Machines
 
 ## Compbio Local Dev
