@@ -1,5 +1,5 @@
-# Barge
-### Shipping Containerized Workflows for DeSci
+# Openzyme
+### Make Molecular Machines
 
 ## Compbio Local Dev
 1) Build compbio image
