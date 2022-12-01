@@ -1,4 +1,4 @@
-# ![Openzyme](https://user-images.githubusercontent.com/9427089/205105361-597bec4c-52ac-449d-869e-1b26708874f4.png)
+# ![Openzyme](https://user-images.githubusercontent.com/9427089/205163968-380db264-57ef-459f-8d56-051a90b655fd.png)
 
 ### Make Molecular Machines
 
