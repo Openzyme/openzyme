@@ -1,47 +1,27 @@
 # ![Openzyme](https://user-images.githubusercontent.com/9427089/205163968-380db264-57ef-459f-8d56-051a90b655fd.png)
 
-### Make Molecular Machines
+## Goal: Catalyze computer aided protein design by...
 
-## Compbio Local Dev
-1) Build compbio image
-```
-$ docker build -t compbio -f ./compbio/Dockerfile ./compbio/
-```
+1) Maintaining accessible comp bio infrastructure 
+* Hardware intensive requirements for molecular simulation tooling creates a high initial barrier
+  * Openzyme deploys open source and containerized workflows on a decentralized compute cluster to maximize accessibility while minimizing vendor lock-in
 
-2) Check that GPU Platform is available
-```
-$ docker run --gpus all compbio python -m openmm.testInstallation
-```
+2) Implementing a high level and mockable interface for running comp bio workflows
+* Long running time of tasks makes developing workflows slow
+  * Openzyme will implement a mockable interface for all long running async tasks to make iterating pipeline logic as fast as possible
 
-2) Run a Molecular Simulation Locally
-```
-$ docker run --gpus all -v $PWD/compbio/output:/code/output compbio python workflows/simulate-protein.py
-```
-Output files should appear in compbio/output after the docker run finishes
+## Running workflows (Requires Docker)
 
-3) (Optional) Deploy Code Changes
+1) Build Dockerized Bacalhau connection
 ```
-$ docker tag compbio openzyme/compbio:a0.2
-$ docker push openzyme/compbio:a0.2
-```
-
-## Bacalhau Jobs
-1) Build Dockerized Bacalhau Connection
-```
-$ sudo sysctl -w net.core.rmem_max=2500000  # Sometimes bacalhau downloads require higher rmem
+$ sudo sysctl -w net.core.rmem_max=2500000  # Sometimes Bacalhau result downloads require higher rmem
 $ docker build -t bacalhau .
 $ docker run --name bacalhau -v bacalhauvol:/bacalhau-main -dt bacalhau
 ```
 
-To shut down the container
+2) Use Bacalhau container to submit workflows
 ```
-$ docker stop bacalhau
-$ docker container rm bacalhau
-```
-
-2) (Optional) Make Sure Bacalhau Connection Works
-```
-$ docker exec -it bacalhau ./bacalhau docker run ubuntu echo hello
+$ docker exec -it bacalhau ./bacalhau docker run --gpu=1 -o output:/code/output openzyme/compbio:a0.2 python workflows/simulate-protein.py
 ```
 
 You should see an output similiar to below
@@ -62,29 +42,26 @@ To get more details about the run, execute:
   bacalhau describe df0aed15-c930-4b1f-bedb-c2baeb6092eb
 ```
 
-Run the following to download results onto to local filesytem (replace id with your job id)
+3) Download results to local file sytem
 ```
-$ docker exec -it bacalhau ./bacalhau get df0aed15-c930-4b1f-bedb-c2baeb6092eb
-$ docker cp bacalhau:/go/bacalhau-main/job-79ec2e3d $PWD/tmp/
-```
-
-## Run a Molecular Simulation in Bacalhau
-```
-$ docker exec -it bacalhau ./bacalhau docker run --gpu=1 -o output:/code/output openzyme/compbio:a0.2 python workflows/simulate-protein.py
-$ docker exec -it bacalhau ./bacalhau get <job_id>
+$ docker exec -it bacalhau ./bacalhau get <job-id>
+$ docker cp bacalhau:/go/bacalhau-main/<short-job-id> $PWD/tmp/
 ```
 
-## Next Steps
-* Change structure-to-trajectory.py 
-* Have create-protein-trajectory.py download all result files to output
-* Pass in PDB files as input through IPFS
-* Pass in params as json file through IPFS
-* Add alphafold with defaul weights to container
-* Add amino-acid-to-structure.py
-* Add amino-acid-to-trajectory.py
+## Compbio Local Dev (Requires GPU and Docker Nvidia)
+1) Build compbio image
+```
+$ docker build -t compbio -f ./compbio/Dockerfile ./compbio/
+```
 
-## Remote Dev Setup
-Recommend using VSCodes SSH tool with an AWS P2 instance
+2) Check that GPU platform is available
+```
+$ docker run --gpus all compbio python -m openmm.testInstallation
+```
 
-Directions to set up docker for GPUs
-https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
+3) Run a molecular simulation locally
+```
+$ docker run --gpus all -v $PWD/compbio/output:/code/output compbio python workflows/simulate-protein.py
+```
+
+Output files appear in compbio/output after the docker run finishes
