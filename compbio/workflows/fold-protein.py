@@ -1,3 +1,5 @@
+import json
+
 import torch
 import esm
 
@@ -9,18 +11,23 @@ model = model.eval().cuda()
 # Lower sizes will have lower memory requirements at the cost of increased speed.
 # model.set_chunk_size(128)
 
-sequence = "MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG"
+# sequence = "MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG"
 # Multimer prediction can be done with chains separated by ':'
+
+with open ("inputs/inputs.json") as f:
+    input_data = json.load(f)
+    sequence = input_data['sequence']
+    print(f"input sequence is {sequence}")
 
 print('infering sequence')
 with torch.no_grad():
     output = model.infer_pdb(sequence)
 
 print('saving pdb')
-with open("output/result.pdb", "w") as f:
+with open("outputs/result.pdb", "w") as f:
     f.write(output)
 
 print('calc b factor')
 import biotite.structure.io as bsio
-struct = bsio.load_structure("output/result.pdb", extra_fields=["b_factor"])
+struct = bsio.load_structure("outputs/result.pdb", extra_fields=["b_factor"])
 print(struct.b_factor.mean())  # this will be the pLDDT

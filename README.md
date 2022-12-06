@@ -21,7 +21,7 @@ $ docker run --name bacalhau -v bacalhauvol:/bacalhau-main -dt bacalhau
 
 2) Use Bacalhau container to submit workflows
 ```
-$ docker exec -it bacalhau ./bacalhau docker run --gpu=1 -o output:/code/output openzyme/compbio:a0.2 python workflows/simulate-protein.py
+$ docker exec -it bacalhau ./bacalhau docker run --gpu=1 --memory=30GB --inputs Qma1ykVSF1r85MibNiojjJLAGjtC8R7BcuCZ5dKLGvJZLF -o outputs:/code/output openzyme/compbio:a0.2 python workflows/fold-protein.py
 ```
 
 You should see an output similiar to below
@@ -61,7 +61,22 @@ $ docker run --gpus all compbio python -m openmm.testInstallation
 
 3) Run a molecular simulation locally
 ```
-$ docker run --gpus all -v $PWD/compbio/output:/code/output compbio python workflows/simulate-protein.py
+$ docker run --gpus all -v $PWD/compbio/outputs:/code/output compbio python workflows/fold-protein.py
 ```
 
 Output files appear in compbio/output after the docker run finishes
+
+
+## Deploy Code Changes (Requires Openzyme Dockerhub keys or own account)
+
+```
+$ docker build -t compbio -f ./compbio/Dockerfile ./compbio/
+$ docker tag compbio openzyme/compbio:a0.2
+$ docker push openzyme/compbio:a0.2
+```
+
+## To organize
+```
+$ bacalhau docker --gpu 1 --memory 30gb run --inputs QmSqvVWBRz5GEVpxdNxaecEykxozVu7fYuPh5LhWauTror openzyme/compbio:a0.3 python ./workflows/fold-protein.py
+$ ipfs add -f inputs
+```

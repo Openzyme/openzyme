@@ -14,7 +14,6 @@ RUN conda --version
 RUN conda install -c conda-forge openmm cudatoolkit
 RUN conda install -c conda-forge mdtraj
 RUN conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
-WORKDIR /code
 
 RUN export PATH=“/root/miniconda3/bin:$PATH”
 RUN pip install fair-esm 
