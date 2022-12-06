@@ -10,23 +10,56 @@
 * Long running time of tasks makes developing workflows slow
   * Openzyme will implement a mockable interface for all long running async tasks to make iterating pipeline logic as fast as possible
 
-## Running workflows (Requires Docker)
+## Quickstart Example
+Requirements: [Docker](https://docs.docker.com/engine/install/ubuntu/#installation-methods)
 
-1) Build Dockerized Bacalhau connection
+1) Clone the repo
+```
+$ git clone git@github.com:Openzyme/openzyme.git
+$ cd ./openzyme
+```
+
+2) Start Dockerized Bacalhau connection
 ```
 $ sudo sysctl -w net.core.rmem_max=2500000  # Sometimes Bacalhau result downloads require higher rmem
-$ docker build -t bacalhau .
-$ docker run --name bacalhau -v bacalhauvol:/bacalhau-main -dt bacalhau
+$ docker build -t bacalhau -f ./bacalhau/Dockerfile .
+$ docker run --name bacalhau -v $PWD/bacalhau/results:/go/bacalhau-main/results -dt bacalhau
 ```
 
-2) Use Bacalhau container to submit workflows
+2) Run Dockerized IPFS service
 ```
-$ docker exec -it bacalhau ./bacalhau docker run --gpu=1 --memory=30GB --inputs Qma1ykVSF1r85MibNiojjJLAGjtC8R7BcuCZ5dKLGvJZLF -o outputs:/code/output openzyme/compbio:a0.2 python workflows/fold-protein.py
+$ docker run -d --name ipfs_host -v $PWD/ipfs/staging/:/export -v $PWD/ipfs/data:/data/ipfs -p 4001:4001 -p 4001:4001/udp -p 127.0.0.1:8080:8080 -p 127.0.0.1:5001:5001 ipfs/kubo:latest
 ```
 
-You should see an output similiar to below
+3) Create input JSON file
 ```
-Job successfully submitted. Job ID: df0aed15-c930-4b1f-bedb-c2baeb6092eb
+$ export sequence="MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
+$ echo {\"sequence\":\"$sequence\"} > ./ipfs/staging/inputs/inputs.txt
+```
+
+4) Pin Input to IPFS
+```
+docker exec ipfs_host ipfs add -r export/inputs/
+```
+
+You should see an about similar to below
+```
+254 B / 254 B  100.00%
+added Qmcm8XNvNrXfyp7nAjdBmBV5NhMNKzjctVvmmKmkRxrNsY inputs/inputs.json
+added QmNjgY8xXJ1ZiFe8iMkJ21PWcdJj63zn8L2hcGFW5XMPTk inputs
+254 B / 254 B  100.00%
+```
+
+The second CID for the directory is used as an input in the next step
+
+5) Use Bacalhau to run job on IPFS input
+```
+$ docker exec -it bacalhau ./bacalhau docker --gpu 1 --memory 30gb run --inputs QmNjgY8xXJ1ZiFe8iMkJ21PWcdJj63zn8L2hcGFW5XMPTk openzyme/compbio:a0.3 python ./workflows/fold-protein.py
+```
+
+You should see an output similair to below:
+```
+Job successfully submitted. Job ID: 3ba00839-b8bf-4558-9e6b-f1ab51badd1e
 Checking job status... (Enter Ctrl+C to exit at any time, your job will continue running):
 
                Creating job for submission ... done ✅
@@ -36,16 +69,17 @@ Checking job status... (Enter Ctrl+C to exit at any time, your job will continue
               Results accepted, publishing ... Job Results By Node:
 
 To download the results, execute:
-  bacalhau get df0aed15-c930-4b1f-bedb-c2baeb6092eb
+  ./bacalhau get 3ba00839-b8bf-4558-9e6b-f1ab51badd1e
 
 To get more details about the run, execute:
-  bacalhau describe df0aed15-c930-4b1f-bedb-c2baeb6092eb
+  ./bacalhau describe 3ba00839-b8bf-4558-9e6b-f1ab51badd1e
 ```
 
-3) Download results to local file sytem
+6) Download the result locally
 ```
-$ docker exec -it bacalhau ./bacalhau get <job-id>
-$ docker cp bacalhau:/go/bacalhau-main/<short-job-id> $PWD/tmp/
+$ export resultdir=job-3ba00839
+$ mkdir ./bacalhau/results/$resultdir
+$ docker exec -it bacalhau ./bacalhau get --output-dir /bacalhau/results/$resultdir 3ba00839-b8bf-4558-9e6b-f1ab51badd1e
 ```
 
 ## Compbio Local Dev (Requires GPU and Docker Nvidia)
@@ -67,16 +101,9 @@ $ docker run --gpus all -v $PWD/compbio/outputs:/code/output compbio python work
 Output files appear in compbio/output after the docker run finishes
 
 
-## Deploy Code Changes (Requires Openzyme Dockerhub keys or own account)
-
+## Deploy Code Changes (requires Dockerhub account)
 ```
 $ docker build -t compbio -f ./compbio/Dockerfile ./compbio/
 $ docker tag compbio openzyme/compbio:a0.2
-$ docker push openzyme/compbio:a0.2
-```
-
-## To organize
-```
-$ bacalhau docker --gpu 1 --memory 30gb run --inputs QmSqvVWBRz5GEVpxdNxaecEykxozVu7fYuPh5LhWauTror openzyme/compbio:a0.3 python ./workflows/fold-protein.py
-$ ipfs add -f inputs
+$ docker push openzyme/compbio:a0.2  # change to your own Dockerhub
 ```
