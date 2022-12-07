@@ -30,6 +30,8 @@ $ docker run -d --name ipfs_host -v $PWD/ipfs/staging/:/export -v $PWD/ipfs/data
 ```
 
 4) Create input JSON file
+
+The `sequence` variable can be changed to any amino acid sequence of interest.
 ```
 $ export sequence="MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
 $ echo {\"sequence\":\"$sequence\"} > ./ipfs/staging/inputs/inputs.json
@@ -51,6 +53,7 @@ added QmNjgY8xXJ1ZiFe8iMkJ21PWcdJj63zn8L2hcGFW5XMPTk inputs
 The second CID for the directory is used as an input in the next step.
 
 6) Use Bacalhau to run job on IPFS input
+
 Change ```inputcid``` to match the content identifier (CID) output from the step above. Make sure to use the directory CID and not the file CID.
 This step can take a couple minutes to calculate. To, utilize the best perk of computer science and take a break as the computer works.
 ```
