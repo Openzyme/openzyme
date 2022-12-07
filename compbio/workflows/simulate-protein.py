@@ -71,6 +71,6 @@ simulation.step(steps)
 # Write file with final simulation state
 
 state = simulation.context.getState(getPositions=True, enforcePeriodicBox=system.usesPeriodicBoundaryConditions())
-with open("output/final_state.pdbx", mode="w") as file:
+with open("outputs/final_state.pdbx", mode="w") as file:
     PDBxFile.writeFile(simulation.topology, state.getPositions(), file)
 print('Simulation complete, file written to disk as ... output/ final_state.pdbx')
