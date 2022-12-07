@@ -24,18 +24,18 @@ $ cd openzyme
 $ docker run --name bacalhau -v $PWD/bacalhau/results:/go/bacalhau-main/results -dt openzyme/bacalhau:v1.0
 ```
 
-2) Run Dockerized IPFS service
+3) Run Dockerized IPFS service
 ```
 $ docker run -d --name ipfs_host -v $PWD/ipfs/staging/:/export -v $PWD/ipfs/data:/data/ipfs -p 4001:4001 -p 4001:4001/udp -p 127.0.0.1:8080:8080 -p 127.0.0.1:5001:5001 ipfs/kubo:latest
 ```
 
-3) Create input JSON file
+4) Create input JSON file
 ```
 $ export sequence="MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
 $ echo {\"sequence\":\"$sequence\"} > ./ipfs/staging/inputs/inputs.json
 ```
 
-4) Pin input to IPFS
+5) Pin input to IPFS
 ```
 docker exec ipfs_host ipfs add -r export/inputs/
 ```
@@ -50,7 +50,7 @@ added QmNjgY8xXJ1ZiFe8iMkJ21PWcdJj63zn8L2hcGFW5XMPTk inputs
 
 The second CID for the directory is used as an input in the next step.
 
-5) Use Bacalhau to run job on IPFS input
+6) Use Bacalhau to run job on IPFS input
 Change ```inputcid``` to match the content identifier (CID) output from the step above. Make sure to use the directory CID and not the file CID.
 This step can take a couple minutes to calculate. To, utilize the best perk of computer science and take a break as the computer works.
 ```
@@ -76,7 +76,7 @@ To get more details about the run, execute:
   ./bacalhau describe 3ba00839-b8bf-4558-9e6b-f1ab51badd1e
 ```
 
-6) Download the results locally
+7) Download the results locally
 ```
 $ export jobid=3ba00839-b8bf-4558-9e6b-f1ab51badd1e  # change to match your job id output
 $ mkdir ./bacalhau/results/$jobid
