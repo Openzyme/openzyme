@@ -13,13 +13,13 @@
 ## Quickstart Example
 Requirements: [Docker](https://docs.docker.com/engine/install/ubuntu/#installation-methods)
 
-1) Clone the repo
+1) Clone the repository
 ```
 $ git clone git@github.com:Openzyme/openzyme.git
 $ cd ./openzyme
 ```
 
-2) Start Dockerized Bacalhau connection
+2) Start Dockerized Bacalhau interface
 ```
 $ sudo sysctl -w net.core.rmem_max=2500000  # Sometimes Bacalhau result downloads require higher rmem
 $ docker build -t bacalhau -f ./bacalhau/Dockerfile .
@@ -34,10 +34,10 @@ $ docker run -d --name ipfs_host -v $PWD/ipfs/staging/:/export -v $PWD/ipfs/data
 3) Create input JSON file
 ```
 $ export sequence="MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK"
-$ echo {\"sequence\":\"$sequence\"} > ./ipfs/staging/inputs/inputs.txt
+$ echo {\"sequence\":\"$sequence\"} > ./ipfs/staging/inputs/inputs.json
 ```
 
-4) Pin Input to IPFS
+4) Pin input to IPFS
 ```
 docker exec ipfs_host ipfs add -r export/inputs/
 ```
@@ -57,7 +57,7 @@ The second CID for the directory is used as an input in the next step
 $ docker exec -it bacalhau ./bacalhau docker --gpu 1 --memory 30gb run --inputs QmNjgY8xXJ1ZiFe8iMkJ21PWcdJj63zn8L2hcGFW5XMPTk openzyme/compbio:a0.3 python ./workflows/fold-protein.py
 ```
 
-You should see an output similair to below:
+You should see an output similar to below:
 ```
 Job successfully submitted. Job ID: 3ba00839-b8bf-4558-9e6b-f1ab51badd1e
 Checking job status... (Enter Ctrl+C to exit at any time, your job will continue running):
@@ -82,6 +82,8 @@ $ mkdir ./bacalhau/results/$resultdir
 $ docker exec -it bacalhau ./bacalhau get --output-dir /bacalhau/results/$resultdir 3ba00839-b8bf-4558-9e6b-f1ab51badd1e
 ```
 
+Result data is now in /bacalhau/results/$resultdir
+
 ## Compbio Local Dev (Requires GPU and Docker Nvidia)
 1) Build compbio image
 ```
@@ -99,7 +101,6 @@ $ docker run --gpus all -v $PWD/compbio/outputs:/code/output compbio python work
 ```
 
 Output files appear in compbio/output after the docker run finishes
-
 
 ## Deploy Code Changes (requires Dockerhub account)
 ```
