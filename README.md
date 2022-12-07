@@ -55,7 +55,7 @@ The second CID for the directory is used as an input in the next step.
 6) Use Bacalhau to run job on IPFS input
 
 Change ```inputcid``` to match the content identifier (CID) output from the step above. Make sure to use the directory CID and not the file CID.
-This step can take a couple minutes to calculate. To, utilize the best perk of computer science and take a break as the computer works.
+This step can take a couple minutes to finish calculating. This is a prime opportunity to utilize one of the best perks of computer science and take a break as the computer works
 ```
 $ export inputcid=QmNjgY8xXJ1ZiFe8iMkJ21PWcdJj63zn8L2hcGFW5XMPTk
 $ docker exec -it bacalhau ./bacalhau docker --gpu 1 --memory 30gb run --inputs $inputcid openzyme/compbio:a0.3 python ./workflows/fold-protein.py
