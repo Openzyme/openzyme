@@ -1,7 +1,9 @@
-import json
+import argparse
 
 import torch
 import esm
+
+import biotite.structure.io as bsio
 
 print('loading models')
 model = esm.pretrained.esmfold_v1()
@@ -14,20 +16,18 @@ model = model.eval().cuda()
 # sequence = "MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG"
 # Multimer prediction can be done with chains separated by ':'
 
-with open ("inputs/inputs.json") as f:
-    input_data = json.load(f)
-    sequence = input_data['sequence']
-    print(f"input sequence is {sequence}")
+parser = argparse.ArgumentParser()
+parser.add_argument("sequence", type=str, help="amino acid sequence to fold")
+args = parser.parse_args()
 
 print('infering sequence')
 with torch.no_grad():
-    output = model.infer_pdb(sequence)
+    output = model.infer_pdb(args.sequence)
 
 print('saving pdb')
 with open("outputs/result.pdb", "w") as f:
     f.write(output)
 
 print('calc b factor')
-import biotite.structure.io as bsio
 struct = bsio.load_structure("outputs/result.pdb", extra_fields=["b_factor"])
 print(struct.b_factor.mean())  # this will be the pLDDT
