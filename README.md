@@ -2,4 +2,4 @@
 
 ## Catalyzing open and decentralized science 
 
-### The active maintence of this software service has move to the [PLEx Lab Exchange](https://github.com/labdao/plex)
+### The active maintence of this software service has moved to the [PLEx Lab Exchange](https://github.com/labdao/plex)
