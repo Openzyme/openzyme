@@ -2,4 +2,9 @@
 
 ## Catalyzing open and decentralized science 
 
+### Projects
+
+* [PLEx Lab Exchange](https://github.com/labdao/plex)
+  * Software infra to run reproducible scientific compute workflows
+
 ### The active maintence of this software service has moved to the [PLEx Lab Exchange](https://github.com/labdao/plex)
