@@ -2,4 +2,11 @@
 
 ## Catalyzing open and decentralized science 
 
-### The active maintence of this software service has moved to the [PLEx Lab Exchange](https://github.com/labdao/plex)
+
+### Projects
+
+* [PLEx Lab Exchange](https://github.com/labdao/plex)
+  * Software infra to run reproducible scientific compute workflows
+
+* Vesicle Delivery Benchmark
+  
