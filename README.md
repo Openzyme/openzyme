@@ -5,8 +5,5 @@
 
 ### Projects
 
-* [PLEx Lab Exchange](https://github.com/labdao/plex)
-  * Software infra to run reproducible scientific compute workflows
-
-* Vesicle Delivery Benchmark
-  
+* [Plex Lab Exchange](https://github.com/labdao/plex)
+  * Software infra to run reproducible scientific compute workflows  
