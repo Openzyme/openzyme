@@ -5,5 +5,11 @@
 
 ### Projects
 
+## Development
 * [Plex Lab Exchange](https://github.com/labdao/plex)
   * Software infra to run reproducible scientific compute workflows  
+
+## Ideation
+* Happy Hamster
+  * Hamster longevity as a public good
+  * Decentralized hamster therapeutic trials
