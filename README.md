@@ -9,3 +9,4 @@
   * Software platform to run reproducible scientific compute workflows  
 
 * Distributed Observations and Verification of Life Span in Schmidtea mediterranea (Sexual morphotype)
+  * Funded by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded)
