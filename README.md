@@ -4,9 +4,12 @@
 
 
 ### Projects
-
-* [Plex Lab Exchange](https://github.com/labdao/plex)
-  * Software platform to run reproducible scientific compute workflows  
-
 * Distributed Observations and Verification of Life Span in Schmidtea mediterranea (Sexual morphotype)
   * Funded by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded)
+   
+* [Plex Lab Exchange](https://github.com/labdao/plex)
+  * Software platform to run reproducible scientific compute workflows
+
+* [Happy Hamster](https://happyhamster.health/)
+  * Developing an epigenetic kit for biological age measurement of pet hamsters 
+  
