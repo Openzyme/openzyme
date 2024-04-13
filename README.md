@@ -4,6 +4,9 @@
 
 
 ### Projects
+* [Crosstalk Bio](https://crosstalkbio.org/)
+  * An Internet of things (IoT) layer for conducting decentralized bio experiments
+
 * Distributed Observations and Verification of Life Span in Schmidtea mediterranea (Sexual morphotype)
   * Funded by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded)
    
