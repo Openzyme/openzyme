@@ -12,6 +12,6 @@ With automatic peer-to-peer networking, Mitosys combines all the possibilities o
 
 All for 0.17 Eth.*
 
-_*Estimated retail price._
-
 _Reserve your Mitosys device by sending 0.017 Eth to thetechnocrat.eth_
+
+[👾](https://app.radicle.xyz/nodes/ash.radicle.garden/rad:z3f8K3uSSd1qPZ7UWpFK9aL4tiiAr)
