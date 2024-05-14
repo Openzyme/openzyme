@@ -2,7 +2,7 @@
 
 <img width="377" alt="Screenshot 2024-05-03 at 9 04 01 AM" src="https://github.com/Openzyme/openzyme/assets/9427089/35f25539-f4f2-40ea-97c2-1edd8d898e75">
 
-In August Crosstalk Bio is launching not just a radical new device, but a radical new idea.
+In August Openzyme is launching not just a radical new device, but a radical new idea.
 
 Mitosys is a device to grow your own cells at home.
 
