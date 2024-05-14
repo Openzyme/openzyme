@@ -4,7 +4,7 @@
 
 In August Crosstalk Bio is launching not just a radical new device, but a radical new idea.
 
-Mitosis is a device to grow your own cells at home.
+Mitosys is a device to grow your own cells at home.
 
 Designed around the simple premise that biomedicine should be as accessible and connected as the internet.
 
