@@ -1,30 +1,17 @@
-# ![Openzyme](https://user-images.githubusercontent.com/9427089/205163968-380db264-57ef-459f-8d56-051a90b655fd.png)
+# Eureka.
 
-## Catalyzing open and decentralized science 
+<img width="377" alt="Screenshot 2024-05-03 at 9 04 01 AM" src="https://github.com/Openzyme/openzyme/assets/9427089/35f25539-f4f2-40ea-97c2-1edd8d898e75">
 
+In August Crosstalk Bio is launching not just a radical new device, but a radical new idea.
 
-### Projects
-* [Crosstalk Bio](https://crosstalkbio.org/)
-  * An Internet of things (IoT) layer for conducting decentralized bio experiments. DeSci <> DePIN.
-  * Currently focused on organizing an Open Homo Sapien Cell Culture Project
+Mitosis is a device to grow your own cells at home.
 
-* [Decentralized Monitoring of Planarian Longevity and Regeneration](https://hackaday.io/project/195642-decentralized-monitoring-of-planarian-regeneration)
-  * Funded by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded)
-   
-* [Plex Lab Exchange](https://github.com/labdao/plex)
-  * Software platform to run reproducible scientific compute workflows created at [LabDAO](https://www.labdao.xyz/)
+Designed around the simple premise that biomedicine should be as accessible and connected as the internet.
 
-* [Happy Hamster](https://happyhamster.health/)
-  * Developing an epigenetic kit for biological age measurement of pet hamsters
-  * Started out as a ETH Global NY 2023 [Hackathon Project](https://ethglobal.com/showcase/happy-hamster-e57za) that won Best Public Goods Project from Nouns DAO
-  
-### Social Links
-[Github](https://github.com/thetechnocrat-dev)
+With automatic peer-to-peer networking, Mitosis combines all the possibilities of biology with all the capabilities of computing.
 
-[X](https://twitter.com/The_Technocrat)
+All for 0.17 Eth.*
 
-[LinkedIn](https://www.linkedin.com/in/josh-mcmenemy-271980140/)
+_*Estimated retail price. (U.S.)_
 
-[Farcaster](https://warpcast.com/thetechnocrat)
-
-[ResearchHub](https://www.researchhub.com/user/993517/overview)
+_Pre-reserve by sending 0.1 Eth to thetechnocrat.eth_
