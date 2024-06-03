@@ -1,6 +1,6 @@
 # ![Openzyme](https://user-images.githubusercontent.com/9427089/205163968-380db264-57ef-459f-8d56-051a90b655fd.png)
 
-## Catalyzing peer-to-peer biomedicine development
+## Catalyzing decentralized bio experiments
 
 ### Flatworm Watcher [Under Development]
 
