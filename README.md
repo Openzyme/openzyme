@@ -4,7 +4,7 @@
 
 ### Flatworm Watcher [Under Development]
 
-<img width="377" alt="Screenshot 2024-05-03 at 9 04 01 AM" src="https://github.com/Openzyme/openzyme/assets/9427089/35f25539-f4f2-40ea-97c2-1edd8d898e75">  
+<img width="402" alt="3D Printed Planarian monitoring device with Raspberry Pi camera" src="https://github.com/Openzyme/openzyme/assets/9427089/33e09730-8c5c-4d08-899f-09e6f7b942a2">
 
 Planarian flatworms are model organisms for longevity, regeneration, and distributed memory.
 
