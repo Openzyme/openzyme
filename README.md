@@ -14,7 +14,7 @@ Designed with infrared lighting to reduce the effects of planarian photosensitiv
 
 Pre-loaded with peer-to-peer networking for inter lab collaboration.
 
-Funding graciously provided by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded). 
+Funding support provided by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded). 
 
 [👾](https://app.radicle.xyz/nodes/ash.radicle.garden/rad:z3f8K3uSSd1qPZ7UWpFK9aL4tiiAr)
 
