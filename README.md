@@ -1,8 +1,26 @@
-# Eureka.
+# ![Openzyme](https://user-images.githubusercontent.com/9427089/205163968-380db264-57ef-459f-8d56-051a90b655fd.png)
 
-<img width="377" alt="Screenshot 2024-05-03 at 9 04 01 AM" src="https://github.com/Openzyme/openzyme/assets/9427089/35f25539-f4f2-40ea-97c2-1edd8d898e75">
+## Catalyzing peer-to-peer biomedicine development
 
-In August Openzyme is launching not just a radical new device, but a radical new idea.
+### Flatworm Watcher [Under Development]
+
+<img width="377" alt="Screenshot 2024-05-03 at 9 04 01 AM" src="https://github.com/Openzyme/openzyme/assets/9427089/35f25539-f4f2-40ea-97c2-1edd8d898e75">  
+
+Planarian flatworms are model organisms for longevity, regeneration, and distributed memory.
+
+The Flatworm Watcher is a device to carry out long running planarian studies.
+
+Designed with infrared lighting to reduce the effects of planarian photosensitivity.
+
+Pre-loaded with peer-to-peer networking for inter lab collaboration.
+
+Funding graciously provided by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded). 
+
+[👾](https://app.radicle.xyz/nodes/ash.radicle.garden/rad:z3f8K3uSSd1qPZ7UWpFK9aL4tiiAr)
+
+##
+
+### Mitosys [Under Research]
 
 Mitosys is a device to grow your own cells at home.
 
@@ -10,8 +28,3 @@ Designed around the simple premise that biomedicine should be as accessible and 
 
 With automatic peer-to-peer networking, Mitosys combines all the possibilities of biology with all the capabilities of computing.
 
-All for 0.17 Eth.*
-
-_Reserve your Mitosys device by sending 0.017 Eth to thetechnocrat.eth_
-
-[👾](https://app.radicle.xyz/nodes/ash.radicle.garden/rad:z3f8K3uSSd1qPZ7UWpFK9aL4tiiAr)
