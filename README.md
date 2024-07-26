@@ -16,17 +16,6 @@ Pre-loaded with peer-to-peer networking for inter lab collaboration.
 
 Funding support provided by [Impetus Grants](https://impetusgrants.org/news-and-updates/round-3-projects-funded). 
 
-[👾 Radicle Repo](https://app.radicle.xyz/nodes/ash.radicle.garden/rad:z3f8K3uSSd1qPZ7UWpFK9aL4tiiAr)
+[:octocat: Code Repo](https://github.com/thetechnocrat-dev/planarian-longevity)
 
-##
-
-### Mitosys [Under Research]
-
-Mitosys is a device to grow your own cells at home.
-
-Designed around the simple premise that biomedicine should be as accessible and connected as the internet.
-
-With automatic peer-to-peer networking, Mitosys combines all the possibilities of biology with all the capabilities of computing.
-
-[Receive device launch notification](https://qjikfgujbci.typeform.com/to/DEoCVDsx)
 
