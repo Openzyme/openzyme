@@ -34,14 +34,17 @@
             padding: 10px 20px;
             margin: 20px 0;
             font-size: 16px;
-            color: #fff;
-            background-color: #007bff;
+            color: #007bff;
+            background-color: transparent;
+            border: 2px solid #007bff;
             text-align: center;
             text-decoration: none;
             border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
         .button:hover {
-            background-color: #0056b3;
+            background-color: #007bff;
+            color: #fff;
         }
         .image {
             display: block;
@@ -57,34 +60,72 @@
             text-align: center;
             color: #777;
         }
+        .text-content p {
+            margin: 10px 0 20px;
+        }
+        .buy-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Layout changes for larger screens */
+        @media (min-width: 768px) {
+            .flex-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: left;
+            }
+            .flex-container .text-content {
+                max-width: 45%;
+                margin-right: 20px;
+            }
+            .flex-container .image {
+                max-width: 50%;
+                margin: 0;
+            }
+            .inline-header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <img class="logo" src="https://user-images.githubusercontent.com/9427089/205163968-380db264-57ef-459f-8d56-051a90b655fd.png" alt="Openzyme Logo">
 
-        <h2>What experiment will we do next?</h2>
-
-        <div class="content">
+        <div class="inline-header">
+            <h2>What experiment will we do next?</h2>
             <a class="button" href="https://app.openzyme.bio/">Go to Web App</a>
+        </div>
 
-            <h3>Flatworm Watcher [Alpha Sale Phase]</h3>
-
-            <img class="image" src="https://github.com/Openzyme/openzyme/assets/9427089/33e09730-8c5c-4d08-899f-09e6f7b942a2" alt="3D Printed Planarian monitoring device with Raspberry Pi camera">
-
-            <p>Planarian flatworms are model organisms for longevity, regeneration, and distributed memory.</p>
-
-            <p>The Flatworm Watcher Alpha is a device to carry out long-running planarian studies.</p>
-
-            <p>Designed with infrared lighting to reduce the effects of planarian photosensitivity.</p>
-
-            <p>Pre-loaded with web app access for inter-lab collaboration with other device owners.</p>
-
-            <a class="button" href="https://square.link/u/egFobQvW">Buy now for $299.99</a>
-
-            <div class="footer">
-                <a href="https://github.com/thetechnocrat-dev/planarian-longevity">Code Repo</a>
+        <div class="content flex-container">
+            <div class="text-content">
+                <h3>Flatworm Watcher [Alpha Sale Phase]</h3>
+                <p>Planarian flatworms are model organisms for longevity, regeneration, and distributed memory.</p>
+                <p>The Flatworm Watcher Alpha is a device to monitor long-running planarian studies.</p>
+                <p>Designed with infrared lighting to reduce the effects of planarian photosensitivity.</p>
+                <p>Pre-loaded with web app access for inter-lab collaboration with other device owners.</p>
+                <a class="buy-button" href="https://square.link/u/egFobQvW">Buy now for $299.99</a>
             </div>
+            <img class="image" src="https://github.com/Openzyme/openzyme/assets/9427089/33e09730-8c5c-4d08-899f-09e6f7b942a2" alt="3D Printed Planarian monitoring device with Raspberry Pi camera">
+        </div>
+
+        <div class="footer">
+            <a href="https://github.com/thetechnocrat-dev/planarian-longevity">Code Repo</a>
         </div>
     </div>
 </body>
